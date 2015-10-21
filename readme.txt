@@ -13,5 +13,3 @@ jenkins
 		Post-build Actions
 			Publish JUnit test result report
 				Test report XMLs=test-reports.xml
-				
-adding pre-commit hook
