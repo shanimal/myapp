@@ -16,7 +16,6 @@ var foo = 'bar';
 var tea = {flavors:['grape','cherry','lime']};
 describe('something',function(){
 	it('should return -1 when the value is not present', function () {
-		/*
 		assert.typeOf(foo, 'string');
 		assert.equal(foo, 'bar');
 		assert.lengthOf(foo, 3)
@@ -38,7 +37,6 @@ describe('something',function(){
 		expect(foo).to.have.length(3);
 		expect(tea).to.have.property('flavors')
 		  .with.length(3);
-		*/
 		
 	})
 });
@@ -77,6 +75,7 @@ describe('something',function(){
  * All errors will have the conventional "remoteIp" and "remotePort" properties.
  * After any error, any socket that was created will be closed.
  */
+var net = require('net');
 function connect(ip4addr, tcpPort, timeout, callback) {
   assert.equal(typeof (ip4addr), 'string',
       "argument 'ip4addr' must be a string");
@@ -94,3 +93,13 @@ function connect(ip4addr, tcpPort, timeout, callback) {
 
   /* do work */
 }
+describe('connect',function(){
+	it('connect should validate parameters', function () {
+		// connect() // argument 'ip4addr' must be a string
+		// connect("abc"); // argument 'ip4addr' must be a valid IPv4 address
+		// connect('127.0.0.0') // tcpPort' must be a number
+		// connect('127.0.0.0','8080') // argument 'tcpPort' must be a number
+		// connect('127.0.0.0',8080) // argument 'timeout' must be a number: expected 'undefined' to equal 'number'
+		connect('127.0.0.0',8080,500,function(){});
+	})
+})
